@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+  <link rel="stylesheet" href="style.css">
+<body>
+  <h1> May Node and Express be with you. </h1>
+  <h1> .لطفا اطلاعات خود را وارد نمایید </h1>
+  <form action="/auth" method="POST">
+    <input  type="text" class="type-1" placeholder="Email" name="email">
+    <input type="text" class="type-1" placeholder="name" name="name">
+    <input type="text" class="type-1" placeholder="Password" name="pass">
+    <button type="submit">Submit</button>
+  </form>
+  <%= result %>
+  <ul>
+    <% for (var i=0; i<result.length; i++) { %>
+      <li><%= result[i].email %></li>
+    <% } %>
+  </ul>
+</body>
+</html>
