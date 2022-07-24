@@ -1,5 +1,5 @@
 import React from "react";
-import '/Users/ch-ababolha-mbp/Desktop/vscode_projects/react/signup/src/assets/fonts/style.css';
+import "../../assets/fonts/style.css";
 
 import {
   MDBCard,
@@ -29,12 +29,12 @@ const schema = yup.object().shape({
   terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
 });
 
-function FormExample() {
+const FormExample = () => {
   let lang = "FA";
   let content = pages_contents[lang].SignUp;
 
   return (
-    <Formik 
+    <Formik
       validationSchema={schema}
       onSubmit={console.log}
       initialValues={{
@@ -56,10 +56,10 @@ function FormExample() {
         isValid,
         errors,
       }) => (
-        <Form noValidate  onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationFormik01">
-              <Form.Label className={'text_small'}>{content.Name}</Form.Label>
+              <Form.Label className={"text_small"}>{content.Name}</Form.Label>
               <Form.Control
                 type="text"
                 name="firstName"
@@ -70,7 +70,7 @@ function FormExample() {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationFormik02">
-              <Form.Label className={'text_small'}>{content.Family}</Form.Label>
+              <Form.Label className={"text_small"}>{content.Family}</Form.Label>
               <Form.Control
                 type="text"
                 name="lastName"
@@ -82,7 +82,9 @@ function FormExample() {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationFormikUsername">
-              <Form.Label className={'text_small'}>{content.userName}</Form.Label>
+              <Form.Label className={"text_small"}>
+                {content.userName}
+              </Form.Label>
               <InputGroup hasValidation>
                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                 <Form.Control
@@ -147,10 +149,11 @@ function FormExample() {
             </Form.Group>
           </Row>
           <Form.Group className="mb-3">
-            <Form.Check  className={'text_small'}
+            <Form.Check
+              className={"text_small"}
               required
               name="terms"
-              label= {content.agreetoTerms}
+              label={content.agreetoTerms}
               onChange={handleChange}
               isInvalid={!!errors.terms}
               feedback={errors.terms}
@@ -163,9 +166,9 @@ function FormExample() {
       )}
     </Formik>
   );
-}
+};
 
-export default function Card() {
+const Card = (item) => {
   let lang = "FA";
   let content = pages_contents[lang].SignUp;
   return (
@@ -176,11 +179,15 @@ export default function Card() {
         background="white"
         style={{ maxWidth: "60rem", color: "black" }}
       >
-        <MDBCardHeader className={'text_bole_medium'} > {content.Title}</MDBCardHeader>
-        <MDBCardBody className="text-dark">
-          <FormExample></FormExample>
-        </MDBCardBody>
+        <MDBCardHeader className={"text_bole_medium"}>
+          {" "}
+          {content.Title}
+        </MDBCardHeader>
+    
+        <MDBCardBody className="text-dark"></MDBCardBody>
       </MDBCard>
     </div>
   );
-}
+};
+
+export { Card, FormExample };

@@ -1,8 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { MDBTextArea } from "mdb-react-ui-kit";
-import Card from "./components/cards";
+import { Card, FormExample } from "./components/cards";
 import Navbar from "./components/navbars";
+import SignupForm from "./components/panels/login_forms/Form2";
+// import Form1 from "./components/panels/login_forms/Form1";
 
 const SiugnUp = () => {};
 
@@ -11,6 +13,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Navbar></Navbar>
+        {/* <Form1></Form1> */}
+        <SignupForm> </SignupForm>
+
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -24,6 +29,7 @@ function App() {
           Learn React
         </a> */}
         <Card></Card>
+        <FormExample></FormExample>
       </header>
     </div>
   );
