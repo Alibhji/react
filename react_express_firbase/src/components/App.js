@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import CreateUser from "./create-user";
 import Users from "./users.component";
 import AllUsers from "./allusers.component";
+import AllUsersFunc from "./all_users_func";
+
+
 
 function App() {
   return (
@@ -40,10 +43,10 @@ function App() {
           <div className="row">
             <div className="col-md-12">
               <Routes>
-                <Route exact path="/" element={<AllUsers />} />
+                <Route exact path="/" element={<AllUsersFunc />} />
                 <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/all-users" element={<AllUsers />} />
+                <Route path="/all-users" element={<AllUsers/>} />
               </Routes>
             </div>
           </div>
