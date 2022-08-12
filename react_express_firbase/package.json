@@ -6,13 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server --mode development --open --hot"
+    "start": "webpack-dev-server --mode development --open --hot",
+    "run_server": "nodemon server.js"
   },
   "author": "ali",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "cors": "^2.8.5",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
