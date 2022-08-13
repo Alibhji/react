@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const LoginComponent = () => {
   return (
@@ -8,8 +9,17 @@ export const LoginComponent = () => {
       initialValues={{
         email: "",
         phone: "",
+      }} 
+      onSubmit={(values ,{setSubmitting}) => {
+        setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+        } , 500);
+
       }}
     >
+        {({ isSubmitting }) => (
+
       <Form>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -30,11 +40,11 @@ export const LoginComponent = () => {
           />
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Please wait..." : "Submit"}</button>
+
         </div>
       </Form>
+        )}
     </Formik>
   );
 };
