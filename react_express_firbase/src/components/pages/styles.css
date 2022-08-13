@@ -1,0 +1,52 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid rgb(32, 22, 228);
+  margin: 20 auto;
+  background-color: #c18888;
+  height: 800px;
+  gap: 2px;
+  
+
+  
+}
+
+.topContainer {
+  width: 90%;
+  border: 3px solid rgb(182, 218, 6);
+  background-color: #c82222;
+  flex: 1;
+}
+
+.middleContainer {
+  flex: 8;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  border: 1px solid rgb(18, 21, 2);
+  background-color: #1ca368;
+  /* gap: 2px; */
+}
+
+.bottomContainer {
+  flex: 1;
+  width: 90%;
+  border: 1px solid rgb(189, 200, 126);
+  background-color: #b3881b;
+}
+
+.loginContainer {
+
+
+  height: 50%;
+    width: 20%;
+  border: 2px solid rgb(42, 16, 208);
+  background-color: #cc0fa3;
+  margin: 2px;
+  padding: 20px
+}

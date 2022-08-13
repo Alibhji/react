@@ -31,8 +31,13 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/all-users"}>
-                    all-users
+                  <Link className="nav-link" to={"/all-users-class"}>
+                    all-users-class
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={"/all-users-func"}>
+                    all-users-func
                   </Link>
                 </li>
               </ul>
@@ -43,10 +48,11 @@ function App() {
           <div className="row">
             <div className="col-md-12">
               <Routes>
-                <Route exact path="/" element={<AllUsersFunc />} />
+                <Route exact path="/" element={<AllUsers />} />
                 <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/all-users" element={<AllUsers/>} />
+                <Route path="/all-users-func" element={<AllUsersFunc/>} />
+                <Route path="/all-users-class" element={<AllUsers/>} />
               </Routes>
             </div>
           </div>
