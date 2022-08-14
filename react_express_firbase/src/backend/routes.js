@@ -14,7 +14,7 @@ exports.routes = (auth_collection, getAllUserasync) => {
   // use this in Ui:
   //   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
 
-  app.use(bodyParser.json()); 
+  app.use(bodyParser.json());
   // for this body parser use this in Ui:
   // //   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/json'}});
 
@@ -47,14 +47,16 @@ exports.routes = (auth_collection, getAllUserasync) => {
       phone: req.body.phone,
       email: req.body.email,
     };
-    auth_collection.insertOne(newUser, (err, result) => {
-      if (err) {
-        console.log(err);
+    auth_collection.findOne({ email: newUser.email }).then((result) => {
+      if (result) {
+        res.send("User already exists");
       } else {
-        res.send(result);
+        auth_collection.insertOne(newUser).then((result) => {
+          console.log(result);
+          res.send("Success");
+        });
       }
     });
-
   });
 
   app.listen(PORT, () => {
