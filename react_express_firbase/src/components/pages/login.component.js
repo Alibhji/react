@@ -2,9 +2,20 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 const Styles = {
   input_feild: { marginTop: "20px", marginBottom: "20px" },
+};
+
+const sendrequest = async (values) => {
+//   e.preventDefault();
+//   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  const response = await axios.post("http://localhost:3000/new_user" ,{...values},{headers: {'Content-Type': 'application/json'}});
+
+  // setUsers(response.data);
+  // console.log(response.data);
+  alert(JSON.stringify(response.data));
 };
 
 const ValidationSchema = Yup.object().shape({
@@ -30,10 +41,12 @@ export const LoginComponent = () => {
         phone: "",
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 1000);
+        // setTimeout(() => {
+        //   alert(JSON.stringify(values, null, 2));
+        //   setSubmitting(false);
+        // }, 1000);
+        setSubmitting(false);
+        sendrequest( values);
       }}
       validationSchema={ValidationSchema}
     >
@@ -70,7 +83,8 @@ export const LoginComponent = () => {
             ) : null}
           </div>
           <div className="form-group">
-            <button style={Styles.input_feild}
+            <button
+              style={Styles.input_feild}
               type="submit"
               className="btn btn-primary"
               disabled={isSubmitting}

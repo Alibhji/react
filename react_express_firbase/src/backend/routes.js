@@ -10,7 +10,14 @@ const corsOptions = {
 
 exports.routes = (auth_collection, getAllUserasync) => {
   const app = express();
-  app.use(bodyParser.urlencoded({ extended: true }));
+  // app.use(bodyParser.urlencoded({ extended: true }));
+  // use this in Ui:
+  //   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+
+  app.use(bodyParser.json()); 
+  // for this body parser use this in Ui:
+  // //   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/json'}});
+
   app.use(cors(corsOptions));
 
   app.get("/", (req, res) => {
@@ -21,7 +28,6 @@ exports.routes = (auth_collection, getAllUserasync) => {
         res.send(result);
       }
     });
-
     // res.sendFile(__dirname + "/public/auth.html");
   });
 
@@ -34,6 +40,21 @@ exports.routes = (auth_collection, getAllUserasync) => {
     });
 
     // res.sendFile(__dirname + "/public/auth.html");
+  });
+
+  app.post("/new_user", (req, res) => {
+    const newUser = {
+      phone: req.body.phone,
+      email: req.body.email,
+    };
+    auth_collection.insertOne(newUser, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+
   });
 
   app.listen(PORT, () => {

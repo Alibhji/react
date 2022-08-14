@@ -15,7 +15,7 @@ const AllUsersFunc = () => {
 
   const fetchUsers = async (e) => {
     e.preventDefault();
-    const response = await axios.get("http://localhost:3000/");
+    const response = await axios.post("http://localhost:3000/");
     // setUsers(response.data);
     console.log(response.data);
   };
