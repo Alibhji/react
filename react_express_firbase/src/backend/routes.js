@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+// const { firebase_auth, fireCreateUserWithEmailAndPassword } = require("./firebase_helper");
 const PORT = 3000;
 const corsOptions = {
   origin: "http://localhost:8080",
@@ -47,6 +49,9 @@ exports.routes = (auth_collection, getAllUserasync) => {
       phone: req.body.phone,
       email: req.body.email,
     };
+
+    fireCreateUserWithEmailAndPassword(newUser.email, newUser.phone);
+
     auth_collection.findOne({ email: newUser.email }).then((result) => {
       if (result) {
         res.send("User already exists");
