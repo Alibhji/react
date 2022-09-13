@@ -1,6 +1,7 @@
 import { UserAuthContextProvider } from "./components/scripts/UserAuthContext";
 import SignUp from "./pages/sign_up";
 
+
 function App() {
   return (
     <UserAuthContextProvider>

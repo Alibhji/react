@@ -1,8 +1,10 @@
 import React from "react";
+import {useState} from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useUserAuth } from "../scripts/UserAuthContext";
+import { signOut } from "firebase/auth";
 
 const Styles = {
   input_feild: { marginTop: "20px", marginBottom: "20px" },
@@ -33,22 +35,23 @@ export const SignUpComponent = () => {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          auth_handler.logInSms();
+          // auth_handler.logInSms();
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
-          // auth_handler
-          //   .signUp(values.email, values.phone)
-          //   .then((userCredential) => {
-          //     // Signed in
-          //     const user = userCredential.user;
-          //     console.log("[OK]----- createUserWithEmailAndPassword----", user);
-          //   })
-          //   .catch((error) => {
-          //     const errorCode = error.code;
-          //     const errorMessage = error.message;
-          //     console.log(errorCode, errorMessage);
-          //     // ..
-          //   });
+          auth_handler
+            // .signUp(values.email, values.phone)
+            .signIn(values.email, "")
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              console.log("[OK]----- createUserWithEmailAndPassword----", user);
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorCode, errorMessage);
+              // ..
+            });
         }, 500);
       }}
       validationSchema={ValidationSchema}
@@ -100,3 +103,52 @@ export const SignUpComponent = () => {
     </Formik>
   );
 };
+
+export const SignOutComponent = () => {
+  const auth_handler = useUserAuth();
+  return (
+    <div>
+      <button
+        onClick={() => {
+          auth_handler.logOut();
+          console.log("sign out");
+        }}
+      >
+        Sign Out
+      </button>
+    </div>
+  );
+};
+
+export const LoginComponent = () => {
+  const auth_handler = useUserAuth();
+  return (
+    <div>
+      <button
+        onClick={() => {
+          auth_handler.logInSms();
+          console.log("sign in");
+        }}
+      >
+        Sign In
+      </button>
+    </div>
+  );
+};
+
+export const SmsVerificationComponent = () => {
+  const auth_handler = useUserAuth();
+  return (
+    <div>
+      <button
+        onClick={() => {
+          auth_handler.logInSms();
+          console.log("SmsVerification");
+        }}
+      >
+        Verify
+      </button>
+    </div>
+  );
+};
+

@@ -12,7 +12,7 @@ const initialState = {
 
 const signupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  phone: Yup.string().required("Required")
+  phone: Yup.string().required("Required"),
 });
 
 // const signupSchema = Yup.object().shape({
@@ -63,7 +63,7 @@ const SignupForm = () => {
           dirty,
         } = formic;
         return (
-          <div className="container">
+          <div className="container ">
             <h1>Sign in to continue</h1>
             <Form onSubmit={handleSubmit}>
               <Field
@@ -83,13 +83,12 @@ const SignupForm = () => {
                 value={values.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                />
-                <ErrorMessage name="phone" component="div" />
+              />
+              <ErrorMessage name="phone" component="div" />
 
-                <button type="submit" disabled={!isValid || !dirty}>
-                    Submit
-                </button>
-                
+              <button type="submit" disabled={!isValid || !dirty}>
+                Submit
+              </button>
             </Form>
           </div>
         );

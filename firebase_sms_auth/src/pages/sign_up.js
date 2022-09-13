@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import auth from "../components/scripts/firebase_helper.js";
-import { SignUpComponent } from "../components/components/formik.signup";
+import {
+  LoginComponent,
+  RestPasswordComponent,
+  SignOutComponent,
+  SignUpComponent,
+  SmsVerificationComponent,
+} from "../components/components/formik.signup";
 import "./styles.css";
+import { SimpleSignUpComponent } from "../components/components/simpleSignup.js";
+
+
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +23,16 @@ class SignUp extends Component {
         <div className="topContainer"></div>
         <div className="middleContainer">
           <div className=" loginContainer">
-            <SignUpComponent />
+            {/* <SignUpComponent />
+            <LoginComponent /> */}
+            <SimpleSignUpComponent />
           </div>
         </div>
-        <div className="bottomContainer"></div>
+        <div className="bottomContainer">
+          <SignOutComponent />
+
+          <SmsVerificationComponent />
+        </div>
       </div>
     );
   }

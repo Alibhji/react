@@ -2,15 +2,7 @@ var admin = require("firebase-admin");
 var serviceAccount = require("./react-aws-test-firebase-adminsdk-x9ctb-e27860299e.json");
 
 var {
-  getAuth,
-  createUserWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  getRedirectResult,
-  signOut,
+  getAuth
 } = require("firebase-admin/auth");
 
 defaultApp = admin.initializeApp({
@@ -19,23 +11,4 @@ defaultApp = admin.initializeApp({
 
 auth = getAuth(defaultApp);
 
-fireCreateUserWithEmailAndPassword = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("[OK]----- createUserWithEmailAndPassword----", user);
-      phoneNumber = "+13138480243";
-      //   signInWithPhoneNumber(phoneNumber);
 
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      // ..
-    });
-};
-
-exports.fireCreateUserWithEmailAndPassword = fireCreateUserWithEmailAndPassword;

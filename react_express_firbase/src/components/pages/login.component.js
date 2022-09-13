@@ -3,6 +3,10 @@ import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { auth__ } from "./react_firebase_helper";
+// import { useUserAuth } from "./UserAuthContext";
+
+// const {user, logIn, logInSms, signUp, logOut}  = useUserAuth
 
 const Styles = {
   input_feild: { marginTop: "20px", marginBottom: "20px" },
@@ -11,6 +15,7 @@ const Styles = {
 const sendrequest = async (values) => {
 //   e.preventDefault();
 //   const response = await axios.post("http://localhost:3000/new_user" ,{"email": "s"},{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+//  logInSms(values.phone)
   const response = await axios.post("http://localhost:3000/new_user" ,{...values},{headers: {'Content-Type': 'application/json'}});
 
   // setUsers(response.data);

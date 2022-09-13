@@ -6,6 +6,7 @@ import {
   RecaptchaVerifier,
   onAuthStateChanged,
   signOut,
+  resetPassword,
 } from "firebase/auth";
 import auth from "./firebase_helper";
 auth.languageCode = "it";
@@ -25,9 +26,13 @@ export function UserAuthContextProvider({ children }) {
   //   },
   //   auth
   // );
-  function logIn(email, password) {
+  function signIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
+  function resetPassword(email) {
+    return resetPassword(auth, email);
+  }
+
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
@@ -36,13 +41,14 @@ export function UserAuthContextProvider({ children }) {
   }
   function logInSms() {
     let phoneNumber = "+1" + "3138480243";
-    let verify = new RecaptchaVerifier('recaptcha-container');
-    signInWithPhoneNumber(phoneNumber, verify).then((result) => {
-      alert("code sent")
-  })
+    let verify = new RecaptchaVerifier("recaptcha-container");
+    signInWithPhoneNumber(phoneNumber, verify)
+      .then((result) => {
+        alert("code sent");
+      })
       .catch((err) => {
-          alert(err);
-          window.location.reload()
+        alert(err);
+        window.location.reload();
       });
   }
 
@@ -56,7 +62,9 @@ export function UserAuthContextProvider({ children }) {
     };
   }, []);
   return (
-    <userAuthContext.Provider value={{ user, logIn, signUp, logInSms, logOut }}>
+    <userAuthContext.Provider
+      value={{ user, signUp, signIn, logInSms, logOut, resetPassword }}
+    >
       {children}
     </userAuthContext.Provider>
   );

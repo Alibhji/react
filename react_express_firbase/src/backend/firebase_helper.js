@@ -48,33 +48,33 @@ const appVerifier = RecaptchaVerifier(
   auth
 );
 
-async function signInWithPhoneNumber(phoneNumber) {
-  signInWithPhoneNumber(auth, phoneNumber)
-    .then((confirmationResult) => {
-      console.log("confirmationResult", confirmationResult);
-      const verificationCode = prompt("Please enter verification code: ");
-      return confirmationResult.confirm(verificationCode);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-}
-
-// exports.fireCreateUserWithEmailAndPassword = (email, password) => {
-//   return createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // Signed in
-//       const user = userCredential.user;
-//       console.log("[OK]----- createUserWithEmailAndPassword----", user);
-//       phoneNumber = "+13138480243";
-//       signInWithPhoneNumber(phoneNumber);
-
-//       // ...
+// async function signInWithPhoneNumber(phoneNumber) {
+//   signInWithPhoneNumber(auth, phoneNumber)
+//     .then((confirmationResult) => {
+//       console.log("confirmationResult", confirmationResult);
+//       const verificationCode = prompt("Please enter verification code: ");
+//       return confirmationResult.confirm(verificationCode);
 //     })
 //     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log(errorCode, errorMessage);
-//       // ..
+//       console.log("error", error);
 //     });
-// };
+// }
+
+exports.fireCreateUserWithEmailAndPassword = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("[OK]----- createUserWithEmailAndPassword----", user);
+      phoneNumber = "+13138480243";
+      // signInWithPhoneNumber(phoneNumber);
+
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
+    });
+};

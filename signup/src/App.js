@@ -4,17 +4,18 @@ import { MDBTextArea } from "mdb-react-ui-kit";
 import { Card, FormExample } from "./components/cards";
 import Navbar from "./components/navbars";
 import SignupForm from "./components/panels/login_forms/Form2";
-// import Form1 from "./components/panels/login_forms/Form1";
+import ContainderMed from "./components/containers/ContainderMed";
+import Signup from "./pages/signup";
 
-const SiugnUp = () => {};
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <Signup />  
         <Navbar></Navbar>
         {/* <Form1></Form1> */}
-        <SignupForm> </SignupForm>
+        {/* <SignupForm> </SignupForm> */}
 
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -28,8 +29,9 @@ function App() {
         >
           Learn React
         </a> */}
+        {/* <ContainderMed item={<SignupForm/>} > </ContainderMed>
         <Card></Card>
-        <FormExample></FormExample>
+        <FormExample></FormExample> */}
       </header>
     </div>
   );
