@@ -30,7 +30,7 @@ max-height: 100px;
     max-height: 100px;
 }
 
-.content{
+.content-container{
     border: 0px;
     flex: 1;
     gap: 10px;
@@ -46,4 +46,22 @@ max-height: 100px;
     background: rgb(240, 146, 6);
     border: 2px solid rgb(186, 8, 8);
     max-width: 100px;
+}
+
+.center-side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: stretch;
+    
+
+}
+
+.item{
+    border: 2px solid rgb(186, 8, 8);
+    min-width: 50%;
+    max-height: 50%;
+    flex :1;
+    background: rgb(255, 255, 255);
 }
