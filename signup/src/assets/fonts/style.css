@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./sans/sans.eot');
+    src: url('./sans/sans.eot?#iefix') format('embedded-opentype'),
+         url('./sans/sans.woff2') format('woff2'),
+         url('./sans/sans.woff') format('woff'),
+         url('./sans/sans.otf') format('otf');
+         }
+
+.Navbar_Farsi{
+    font-family: sans;
+}
+
+.text_small{
+    font-family: sans;
+    font-size: 18px;
+}
+
+.text_bole_medium{
+    font-family: sans;
+    font-size: 22px;
+    font-weight: 500;
+
+}
+
+
+.NavContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.subNavContainer {
+  border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    align-items: center;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    margin-right: 15px;
+}
+
+

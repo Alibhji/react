@@ -31,7 +31,7 @@ MongoClient.connect(mongo_string, { useUnifiedTopology: true })
           console.log(err);
         } else {
           // res.send(result);
-          res.render("index.ejs", {result:result});
+          res.render("index.ejs", { result: result });
         }
       });
 
@@ -49,8 +49,8 @@ MongoClient.connect(mongo_string, { useUnifiedTopology: true })
       // res.sendFile(__dirname + "/public/auth.html");
     });
 
-    app.listen(3000, () => {
-      console.log("Server is listening on port 3000");
+    app.listen(3200, () => {
+      console.log("Server is listening on port 3200");
     });
   })
   .catch((err) => {

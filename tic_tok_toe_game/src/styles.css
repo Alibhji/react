@@ -1,0 +1,68 @@
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    background-color: rgb(248, 247, 247);
+  }
+
+.mainContainer{
+    padding: 15px;
+    margin: 10px;
+    background-color: rgb(248, 247, 247);
+    border-radius: 5px;
+    border: 1px solid rgb(204, 204, 204);
+    display: flex;  
+    flex-direction: row;
+
+}
+
+.containerBlock{
+    border-radius: 10px;
+    margin: 2px;
+    display: flex;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin: 1px;
+    padding: 5px;
+    align-items: flex-start;
+    justify-content: start;
+}
+
+.middleContainer{
+    align-items: center;
+    background-color: rgb(188, 115, 115);
+    flex-direction: column;
+    flex: 8;  
+}
+
+.leftContainer{
+    background-color: rgb(31, 184, 57);
+    flex: 2;
+    height: 200px;
+}
+
+.rightContainer{
+    background-color: rgb(76, 41, 165);
+    flex: 2;
+    height: 200px;
+}
+
+.app-style {
+    color: white;
+}
+
+.square{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    margin: 5px;
+}
+
+.post{
+    width: 98%;
+    height: 400px;
+    border-radius: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}

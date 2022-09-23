@@ -1,0 +1,67 @@
+
+@import 'primeflex/primeflex.scss';
+
+.container_main{
+    @include styleclass('flex card-container row-gap-2');
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 10px;
+}
+
+.block {
+    @include styleclass('flex flex-grow-1');
+    flex:1;
+    border: 2px solid black;
+}
+
+.navbar{
+background: blue;
+border: 2px solid red;
+max-height: 100px;
+}
+
+.footer{
+    background: rgb(0, 255, 0);
+    border: 2px solid red;
+    max-height: 100px;
+}
+
+.content-container{
+    border: 0px;
+    flex: 1;
+    gap: 10px;
+}
+
+.left-side{
+    background: rgb(240, 146, 6);
+    border: 2px solid rgb(186, 8, 8);
+    max-width: 100px;
+}
+
+.right-side{
+    background: rgb(240, 146, 6);
+    border: 2px solid rgb(186, 8, 8);
+    max-width: 100px;
+}
+
+.center-side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: stretch;
+    
+
+}
+
+.item{
+    border: 2px solid rgb(186, 8, 8);
+    min-width: 50%;
+    max-height: 50%;
+    flex :1;
+    background: rgb(255, 255, 255);
+}
