@@ -11,7 +11,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 
-export const Grid = () => {
+export const Grid = ({ center_area }) => {
   return (
     <div class="card">
       <div class="container_main">
@@ -20,7 +20,8 @@ export const Grid = () => {
           <div class="block left-side">4</div>
           <div class="block center-side">
             <div class="item center-side">
-              <InputGroup />
+              {/* <InputGroup /> */}
+              {center_area}
             </div>
           </div>
           <div class="block right-side">5</div>
@@ -61,11 +62,58 @@ export class ButtonDemo extends Component {
   }
 }
 
-class InputGroup extends Component {
+export class InputGroup_Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value1: "",
+      center_area: "",
+    };
+  }
+
+  render() {
+    return (
+      <div className="card">
+        <h5>Login</h5>
+        <div className="grid p-fluid">
+          <div className="col-12">
+            <div className="p-inputgroup">
+              <span className="p-inputgroup-addon">
+                <i className="pi pi-envelope"></i>
+              </span>
+              <InputText placeholder="Email / phone number" />
+            </div>
+          </div>
+
+          <div className="col-12 ">
+            <div className="p-inputgroup">
+              <span className="p-inputgroup-addon">
+                <i className="pi pi-lock"></i>
+              </span>
+              <Password
+                placeholder="Password"
+                value={this.state.value4}
+                feedback={false}
+              />
+            </div>
+          </div>
+
+          {/* <div className="col-12 ">
+            <div className="p-inputgroup">
+              <span className="p-inputgroup-addon">www</span>
+              <InputText placeholder="Website" />
+            </div>
+          </div> */}
+        </div>
+      </div>
+    );
+  }
+}
+
+export class InputGroup_Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      center_area: "",
     };
   }
 
@@ -83,16 +131,25 @@ class InputGroup extends Component {
         </ul>
       </React.Fragment>
     );
+
     return (
       <div className="card">
-        <h5>Login</h5>
+        <h5>Signup</h5>
         <div className="grid p-fluid">
           <div className="col-12">
             <div className="p-inputgroup">
               <span className="p-inputgroup-addon">
-                <i className="pi pi-user"></i>
+                <i className="pi pi-phone"></i>
               </span>
-              <InputText placeholder="Username" />
+              <InputText placeholder="Phone number" />
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="p-inputgroup">
+              <span className="p-inputgroup-addon">
+                <i className="pi pi-envelope"></i>
+              </span>
+              <InputText placeholder="Email" />
             </div>
           </div>
 
@@ -101,12 +158,7 @@ class InputGroup extends Component {
               <span className="p-inputgroup-addon">
                 <i className="pi pi-lock"></i>
               </span>
-              <Password
-                value={this.state.value4}
-                onChange={(e) => this.setState({ value4: e.target.value })}
-                header={header}
-                footer={footer}
-              />
+              <Password placeholder="Password" value={this.state.value4} onChange={(e) => this.setState({ value4: e.target.value })} header={header} footer={footer} />
             </div>
           </div>
 

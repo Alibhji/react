@@ -7,38 +7,40 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Signup from "./components/Signup";
-import 'primeflex/primeflex.css';
-import { Grid } from "./components/Grid";
+import "primeflex/primeflex.css";
+import { Grid, InputGroup_Login, InputGroup_Signup } from "./components/Grid";
 
 function App() {
   return (
- 
-      <Router>
-        {/* <Container style={{ width: "400px" }}> */}
-        <Container>
-          <Row>
-            <Col>
-              <UserAuthContextProvider>
-                <Routes>
-                  <Route
-                    path="/home"
-                    element={
-                      <ProtectedRoute>
-                        <Home />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="/" element={<Login />} />
-                  <Route path="/data" element={<DataDisply />} />
-                  <Route path="/grid" element={<Grid />} />
-                  <Route path="/signup" element={<Signup />} />
-                </Routes>
-              </UserAuthContextProvider>
-            </Col>
-          </Row>
-        </Container>
-      </Router>
-  
+    <Router>
+      {/* <Container style={{ width: "400px" }}> */}
+      <Container>
+        <Row>
+          <Col>
+            <UserAuthContextProvider>
+              <Routes>
+                <Route
+                  path="/home"
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/" element={<Login />} />
+                <Route path="/data" element={<DataDisply />} />
+                <Route
+                  path="/login"
+                  element={<Grid center_area={<InputGroup_Login />} />}
+                />
+           
+                <Route path="/signup" element={<Grid center_area={<InputGroup_Signup />} />} />
+              </Routes>
+            </UserAuthContextProvider>
+          </Col>
+        </Row>
+      </Container>
+    </Router>
   );
 }
 
