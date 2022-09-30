@@ -5,7 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import auth from "./firebase_helper";
+import {auth} from "./firebase_helper";
 
 
 

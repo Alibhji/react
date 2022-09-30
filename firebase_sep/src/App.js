@@ -9,6 +9,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Signup from "./components/Signup";
 import "primeflex/primeflex.css";
 import { Grid, InputGroup_Login, InputGroup_Signup } from "./components/Grid";
+import LoginSMS2 from "./components/sms2";
+
+
 
 function App() {
   return (
@@ -33,6 +36,7 @@ function App() {
                   path="/login"
                   element={<Grid center_area={<InputGroup_Login />} />}
                 />
+                <Route path="/sms" element={<LoginSMS2 />} />
            
                 <Route path="/signup" element={<Grid center_area={<InputGroup_Signup />} />} />
               </Routes>

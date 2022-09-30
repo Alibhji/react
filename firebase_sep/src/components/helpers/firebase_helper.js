@@ -1,22 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// create .env.local file and add your firebase config
-// MONGODB_URI = "mongodb+srv://..."
-// REACT_APP_FIREBASE_API_KEY = "..."
-// REACT_APP_FIREBASE_AUTH_DOMAIN = "..."
-// REACT_APP_FIREBASE_PROJECT_ID = "..."
-// REACT_APP_FIREBASE_STORAGE_BUCKET = "..."
-// REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "..."
-// REACT_APP_FIREBASE_APP_ID = "..."
-// REACT_APP_FIREBASE_CLIENT_ID = "..."
-// REACT_APP_FIREBASE_SCOPES =[
-//     "https://www.googleapis.com/auth/userinfo.email",
-//     "https://www.googleapis.com/auth/userinfo.profile",
-//      "https://www.googleapis.com/auth/calendar"
-// ]
-// REACT_APP_FIREBASE_DISCOVERY_DOCS =[
-//     "https://calendar-json.googleapis.com/$discovery/rest?version=v3"
-// ]
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -33,6 +17,12 @@ const firebaseConfig = {
 console.log("firebaseConfig", firebaseConfig);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+// auth.languageCode = "it";
+
+
+
+// To apply the default browser preference instead of explicitly setting it.
+// auth().useDeviceLanguage();
 
 // var uiConfig = {
 //   signInSuccessUrl: "localhost:3000", // Assuming you are running on your local machine
@@ -51,4 +41,4 @@ const auth = getAuth(app);
 // // The start method will wait until the DOM is loaded.
 // ui.start("#firebaseui-auth-container", uiConfig);
 
-export default auth;
+export  {auth , app};

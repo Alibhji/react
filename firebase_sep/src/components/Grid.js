@@ -10,6 +10,8 @@ import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {auth} from "./helpers/firebase_helper";
 
 export const Grid = ({ center_area }) => {
   return (
@@ -109,6 +111,50 @@ export class InputGroup_Login extends Component {
   }
 }
 
+// const oncaptchaVerify = (recaptchaToken) => {
+//   console.log("recaptchaToken", recaptchaToken);
+//   const recaptchaVerifier = new RecaptchaVerifier("recaptcha-container", {
+//     // size: "invisible",
+//     size: "normal",
+//     callback: (response) => {
+//       // reCAPTCHA solved, allow signInWithPhoneNumber.
+//       console.log("response", response);
+//       signInWithPhone("+13138480243");
+//       // onSignInSubmit();
+//     },
+//   });
+//   recaptchaVerifier.render().then(function (widgetId) {
+//     window.recaptchaWidgetId = widgetId;
+//   });
+//   // ...
+// };
+
+const signInWithPhone = () => {
+  // const appVerifier = window.recaptchaVerifier;
+  const phoneNumber = "+13138480243";
+  const appVerifier = new RecaptchaVerifier("recaptcha-container", {
+    size: "invisible",
+    callback: (response) => {
+      // reCAPTCHA solved, allow signInWithPhoneNumber.
+      console.log("response", response);
+      // onSignInSubmit();
+    },
+  });
+
+  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      window.confirmationResult = confirmationResult;
+      alert("OTP is sent to your mobile number..");
+      // ...
+    })
+    .catch((error) => {
+      // Error; SMS not sent
+      // ...
+    });
+};
+
 export class InputGroup_Signup extends Component {
   constructor(props) {
     super(props);
@@ -135,6 +181,7 @@ export class InputGroup_Signup extends Component {
     return (
       <div className="card">
         <h5>Signup</h5>
+
         <div className="grid p-fluid">
           <div className="col-12">
             <div className="p-inputgroup">
@@ -142,8 +189,15 @@ export class InputGroup_Signup extends Component {
                 <i className="pi pi-phone"></i>
               </span>
               <InputText placeholder="Phone number" />
+              <Button
+                label="Submit"
+                icon="pi pi-check"
+                loading={false}
+                onClick={signInWithPhone}
+              />
             </div>
           </div>
+          <div id="recaptcha-container"> </div>
           <div className="col-12">
             <div className="p-inputgroup">
               <span className="p-inputgroup-addon">
@@ -158,7 +212,13 @@ export class InputGroup_Signup extends Component {
               <span className="p-inputgroup-addon">
                 <i className="pi pi-lock"></i>
               </span>
-              <Password placeholder="Password" value={this.state.value4} onChange={(e) => this.setState({ value4: e.target.value })} header={header} footer={footer} />
+              <Password
+                placeholder="Password"
+                value={this.state.value4}
+                onChange={(e) => this.setState({ value4: e.target.value })}
+                header={header}
+                footer={footer}
+              />
             </div>
           </div>
 
