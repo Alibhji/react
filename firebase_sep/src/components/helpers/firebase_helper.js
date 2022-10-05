@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
+import {initializeApp} from 'firebase/app';
+import { getAuth , RecaptchaVerifier  } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,9 +16,16 @@ const firebaseConfig = {
 console.log("firebaseConfig", firebaseConfig);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+// const recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
+//   'size': 'invisible',
+//   'callback': (response) => {
+//     console.log("response", response);
+//     // reCAPTCHA solved, allow signInWithPhoneNumber.
+//   }
+// });
+
+
 // auth.languageCode = "it";
-
-
 
 // To apply the default browser preference instead of explicitly setting it.
 // auth().useDeviceLanguage();
@@ -41,4 +47,6 @@ const auth = getAuth(app);
 // // The start method will wait until the DOM is loaded.
 // ui.start("#firebaseui-auth-container", uiConfig);
 
-export  {auth , app};
+
+
+export { auth, app ,RecaptchaVerifier   };

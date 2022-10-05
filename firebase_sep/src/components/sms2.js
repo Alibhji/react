@@ -1,5 +1,6 @@
 import React from "react";
-import { app, auth } from "./helpers/firebase_helper";
+import { app, auth, RecaptchaVerifier } from "./helpers/firebase_helper";
+import { signInWithPhoneNumber } from "firebase/auth";
 
 export default class LoginSMS2 extends React.Component {
   constructor(props) {
@@ -8,30 +9,16 @@ export default class LoginSMS2 extends React.Component {
     this.onSignInSubmit = this.onSignInSubmit.bind(this);
   }
 
-  setUpRecaptcha = () => {
-    window.recaptchaVerifier = new app.auth.RecaptchaVerifier(
-      "recaptcha-container",
-      
-      {
-        size: "invisible",
-        callback: function (response) {
-          console.log("Captcha Resolved");
-          this.onSignInSubmit();
-        },
-        defaultCountry: "IN",
-      }
-    );
-  };
+  setUpRecaptcha = (e) => {};
 
   onSignInSubmit = (e) => {
     e.preventDefault();
-    this.setUpRecaptcha();
-    let phoneNumber = "";
+    let phoneNumber = "+13138480243";
     console.log(phoneNumber);
+
     let appVerifier = window.recaptchaVerifier;
-    app
-      .auth()
-      .signInWithPhoneNumber(phoneNumber, appVerifier)
+
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then(function (confirmationResult) {
         window.confirmationResult = confirmationResult;
         console.log(confirmationResult);
@@ -52,6 +39,27 @@ export default class LoginSMS2 extends React.Component {
         console.log(error);
       });
   };
+
+  componentDidMount() {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "normal",
+        callback: (response) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          // ...
+        },
+        "expired-callback": () => {
+          // Response expired. Ask user to solve reCAPTCHA again.
+          // ...
+        },
+      },
+      auth
+    );
+    window.recaptchaVerifier.render().then((widgetId) => {
+      window.recaptchaWidgetId = widgetId;
+    });
+  }
 
   render() {
     return (
