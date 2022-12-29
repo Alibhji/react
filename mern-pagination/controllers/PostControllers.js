@@ -23,12 +23,10 @@ exports.getAllposts = async (req, res) => {
         res.status(200).json({
             success: true,
             count: results.length,
-            pagination: {
-                total,
-                pages,
-                page,
-                limit
-            },
+            total: total,
+            pages: pages,
+            page: page,
+            limit: limit,
             data: results
         })
 
