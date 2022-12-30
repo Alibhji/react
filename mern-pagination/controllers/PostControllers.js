@@ -42,3 +42,30 @@ exports.getAllposts = async (req, res) => {
     }
 
 }
+
+
+exports.deletePost = async (req, res) => {
+    try {
+        const post = await Post.findById(req.query.id);
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                error: 'No post found'
+            })
+        }
+        await post.remove();
+        res.status(200).json({
+            success: true,
+            data: {}
+        })
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        })
+
+    }
+}

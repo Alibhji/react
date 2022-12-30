@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllposts } = require('../controllers/PostControllers');
+const { getAllposts , deletePost } = require('../controllers/PostControllers');
 
 router.route('/').get(getAllposts);
+router.route('/delete').get(deletePost);
 
 module.exports = router;

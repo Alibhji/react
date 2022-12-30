@@ -12,7 +12,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(50);
   const [totalPages, setTotalPages] = useState(0);
   let { pageNumber } = useParams(); // Unpacking and retrieve id
   // if (pageNumber) {
@@ -29,8 +29,8 @@ const App = () => {
       setLoading(true);
       try {
 
-        setPage(parseInt(pageNumber) || 1)
-        console.log(page, pageNumber);
+        // setPage(parseInt(pageNumber) || 1)
+        if (pageNumber) {setPage(parseInt(pageNumber) || 1)}
         const res = await fetch(`/api/v1/posts?page=${page}&limit=${limit}`);
         const { data, pages: totalPages } = await res.json();
         setTotalPages(totalPages);
