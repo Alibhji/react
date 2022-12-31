@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Table } from 'antd'
+import { Table, Popconfirm, Button } from 'antd'
 
 const DataTable = () => {
   const [gridData, setGridData] = useState([])
@@ -29,8 +29,6 @@ const DataTable = () => {
       setLoading(false)
     }
 
-
-
     // const modifiedData = gridData.map(({ body, ...item }, index) => {
     //   return {
     //     ...item,
@@ -42,34 +40,53 @@ const DataTable = () => {
   }
   const columns = [
     {
-      title :"ID",
+      title: "ID",
       dataIndex: "_id",
     },
     {
-      title:"title",
+      title: "title",
       dataIndex: "title",
       align: "center",
       editable: true,
     },
     {
-      title:"author",
+      title: "author",
       dataIndex: "author",
       align: "center",
       editable: true,
     },
     {
-      title:"body",
+      title: "body",
       dataIndex: "body",
       align: "center",
       editable: true,
     },
     {
-      title:"Actions",
+      title: "Actions",
       dataIndex: "actions",
       align: "center",
+      render: (text, record) => (
+        <Popconfirm title="Sure to delete?" onConfirm={() => deleteRow(record._id)}>
+          <Button type="primary">Delete { }</Button>
+        </Popconfirm>
+
+      )
+
     }];
+
+  const deleteRow = async (id) => {
+    try {
+      const res = await axios.delete(`/api/v1/posts/delete?id=${id}`)
+      setGridData(gridData.filter(item => item._id !== id))
+
+    } catch (error) {
+      console.log(error)
+
+
+    }
+  }
   return (
-    <div> 
+    <div>
       <Table
         columns={columns}
         dataSource={gridData}
